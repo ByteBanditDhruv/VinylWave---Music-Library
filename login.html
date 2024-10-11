@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Company Logo and Name -->
+        <div class="brand-section">
+            <img src="assets/logo.png" alt="Company Logo" class="logo">
+            <h1 class="company-name">VinylWave</h1>
+        </div>
+
+        <!-- Login Form -->
+        <div class="form-container" id="login-container">
+            <h2>Login</h2>
+            <form id="loginForm" onsubmit="return validateLogin()">
+                <div class="input-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="loginEmail" required>
+                    <span class="error" id="loginEmailError"></span>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="loginPassword" required>
+                    <span class="error" id="loginPasswordError"></span>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p>Don't have an account? <span class="toggle-form" onclick="toggleForm()">Signup here</span></p>
+            </form>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="form-container" id="signup-container">
+            <h2>Signup</h2>
+            <form id="signupForm" onsubmit="return validateSignup()">
+                <div class="input-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="signupEmail" required>
+                    <span class="error" id="signupEmailError"></span>
+                </div>
+                <div class="input-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="signupPassword" required>
+                    <span class="error" id="signupPasswordError"></span>
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <span class="error" id="confirmPasswordError"></span>
+                </div>
+                <button type="submit" class="btn">Signup</button>
+                <p>Already have an account? <span class="toggle-form" onclick="toggleForm()">Login here</span></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

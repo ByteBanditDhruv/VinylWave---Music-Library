@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VinylWave</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMa4Zt7fM6EJ59xvbh7Hg4DjTUtT6NsfmTw94c" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="assets/logo.png" class="logo" alt="Logo">
+            VinylWave
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto home-icon">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa-solid fa-house"></i></a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 rounded-pill search" type="search"
+                    placeholder="What do you want to play?" aria-label="Search">
+                <button class="btn btn-outline-light rounded-pill my-2 my-sm-0" type="submit"><i
+                        class="fas fa-search"></i></button>
+            </form>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="btn btn-outline-light rounded-pill mx-2" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light rounded-pill mx-2" href="#">Signup</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-2 col-md-3 sidebar fixed-sidebar">
+                <div class="sidebar-header">
+                    <span>Your Library</span>
+                    <button class="plus"><i class="fas fa-plus"></i></button>
+                </div>
+                <div class="scrollable-section">
+                    <div class="mb-3">
+                        <h5>Create your first playlist</h5>
+                        <p>It's easy, we'll help you</p>
+                        <button class="btn-create">Create playlist</button>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="mb-3">
+                        <h5>Let's find some podcasts to follow</h5>
+                        <p>We'll keep you updated on new episodes</p>
+                        <button class="btn-browse">Browse podcasts</button>
+                    </div>
+                </div>
+                <div class="sidebar-footer mt-4">
+                    <a href="#" class="footer-link">Legal</a>
+                    <a href="#" class="footer-link">Safety & Privacy Center</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Cookies</a>
+                    <a href="#" class="footer-link">About Ads</a>
+                    <a href="#" class="footer-link">Accessibility</a>
+                    <button class="btn-language">
+                        <i class="fas fa-globe"></i> English
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-10 col-md-9 main-content">
+                <div class="popular-artists">
+                    <h3>Popular Artists</h3>
+                    <div class="artist-list d-flex flex-wrap justify-content-center">
+                        <div class="artist text-center" onclick="showSongs('arijit')">
+                            <img src="assets/arijit.jpeg" class="img-fluid" alt="Arijit">
+                            <p>Arijit Singh</p>
+                        </div>
+                        <div class="artist text-center" onclick="showSongs('diljit')">
+                            <img src="assets/Diljit.jpeg" class="img-fluid" alt="Diljit">
+                            <p>Diljit Dosanjh</p>
+                        </div>
+                        <div class="artist text-center">
+                            <img src="assets/KK.jpg" class="img-fluid" alt="KK">
+                            <p>KK</p>
+                        </div>
+                        <div class="artist text-center">
+                            <img src="assets/nigam.png" class="img-fluid" alt="Sonu">
+                            <p>Sonu Nigam</p>
+                        </div>
+                        <div class="artist text-center">
+                            <img src="assets/shaan.jpeg" class="img-fluid" alt="Shaan">
+                            <p>Shaan</p>
+                        </div>
+                        <!-- Add more artist cards similarly -->
+                    </div>
+                </div>
+
+
+                <div class="song-list" id="songList" style="display: none;">
+                    <h3 id="artistName"></h3>
+                    <ul id="songs"></ul>
+                    <button class="close-btn" onclick="closeSongs()">Close</button>
+                </div>
+
+
+                <div class="col-lg-10 col-md-9 main-content">
+                    <div class="popular-albums">
+                        <h3>Popular Albums</h3>
+                        <div class="album-scroll-container">
+                            <button class="scroll-left">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="album-list-wrapper">
+                                <div class="album-list d-flex">
+                                    <div class="album text-center">
+                                        <img src="assets/album1.jpeg" class="img-fluid" alt="Album 1">
+                                        <p>Rockstar</p>
+                                    </div>
+                                    <div class="album text-center">
+                                        <img src="assets/album2.png" class="img-fluid" alt="Album 2">
+                                        <p>Old is Gold</p>
+                                    </div>
+                                    <div class="album text-center">
+                                        <img src="assets/album3.jpeg" class="img-fluid" alt="Album 3">
+                                        <p>Best of KK</p>
+                                    </div>
+                                    <div class="album text-center">
+                                        <img src="assets/album4.jpg" class="img-fluid" alt="Album 4">
+                                        <p>King Khan</p>
+                                    </div>
+                                    <div class="album text-center">
+                                        <img src="assets/album5.jpg" class="img-fluid" alt="Album 5">
+                                        <p>Ed Sheeran</p>
+                                    </div>
+                                    <div class="album text-center">
+                                        <img src="assets/album6.jpeg" class="img-fluid" alt="Album 6">
+                                        <p>One Direction</p>
+                                    </div>
+                                    <div class="album text-center">
+                                        <img src="assets/album7.jpeg" class="img-fluid" alt="Album 7">
+                                        <p>Taylor Swift</p>
+                                    </div>
+                                    <div class="album text-center">
+                                        <img src="assets/album8.jpeg" class="img-fluid" alt="Album 8">
+                                        <p>Coldplay</p>
+                                    </div>
+                                    <div class="album text-center">
+                                        <img src="assets/album10.jpeg" class="img-fluid" alt="Album 9">
+                                        <p>Best of Shankar</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="scroll-right">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container">
+                        <div class="footer-content">
+                            <div class="footer-section">
+                                <h5>Company</h5>
+                                <ul>
+                                    <li><a href="AboutUs.html">About</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-section">
+                                <h5>Communities</h5>
+                                <ul>
+                                    <li><a href="#">For Artists</a></li>
+                                    <li><a href="#">Developers</a></li>
+                                    <li><a href="#">Advertising</a></li>
+                                    <li><a href="#">Investors</a></li>
+                                    <li><a href="#">Vendors</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-section">
+                                <h5>Useful links</h5>
+                                <ul>
+                                    <li><a href="#">Support</a></li>
+                                    <li><a href="#">Free Mobile App</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-section">
+                                <h5>VinylWave Plans</h5>
+                                <ul>
+                                    <li><a href="#">Premium Individual</a></li>
+                                    <li><a href="#">Premium Duo</a></li>
+                                    <li><a href="#">Premium Family</a></li>
+                                    <li><a href="#">Premium Student</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Scripts -->
+    <script>
+        const albumList = document.querySelector('.album-list');
+        const scrollRightButton = document.querySelector('.scroll-right');
+        const scrollLeftButton = document.querySelector('.scroll-left');
+
+        scrollRightButton.addEventListener('click', () => {
+            albumList.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+
+        scrollLeftButton.addEventListener('click', () => {
+            albumList.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+    </script>
+    <script>
+        const artists = {
+        diljit: {
+            name: "Diljit Dosanjh",
+            songs: [
+                "Do you know",
+                "Laembadgini",
+                "Panga",
+                "Shadaa",
+                "Lover"
+            ]
+        },
+        arijit: {
+            name: "Arijit Singh",
+            songs: [
+                "Tum Hi Ho",
+                "Channa Mereya",
+                "Ae Mere Humsafar",
+                "Kabira",
+                "Raabta"
+            ]
+        }
+    };
+
+    function showSongs(artistKey) {
+        const artist = artists[artistKey];
+        document.getElementById('artistName').innerText = artist.name;
+        const songList = document.getElementById('songs');
+        songList.innerHTML = ''; // Clear previous songs
+
+        artist.songs.forEach(song => {
+            const li = document.createElement('li');
+            li.className = "song-item";
+
+            li.innerHTML = `
+                <span class="song-title">${song}</span>
+                <div class="song-buttons">
+                    <button class="play-btn" aria-label="Play ${song}">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="fav-btn" aria-label="Add ${song} to favorites">
+                        <i class="fas fa-star"></i>
+                    </button>
+                </div>
+            `;
+            songList.appendChild(li);
+        });
+
+        document.getElementById('songList').style.display = 'block';
+    }
+
+    function closeSongs() {
+        document.getElementById('songList').style.display = 'none';
+    }
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
